@@ -14,24 +14,26 @@ This is a very simple application which displays the actual and projected total 
 2. Main Panel <small>The right-hand main panel has three sections as following from top to bottom. Country Profile, Plot and Projected Population</small>
 3. Link to help page <small>This webpage has additional information about this Shiny Aapp.</small>
 
-Code to read the world bank data and summary of UK data
+Code to read data
 ========================================================
-
+1. Source Data <http://databank.worldbank.org/data/source/health-nutrition-and-population-statistics/>
+2. Source Code <https://github.com/sukhenc/worldpopulationpredictor/>
 
 ```r
 source("loaddata.R")
-summary(subset(populationdataset, countryname == "United Kingdom")[,6:7]) 
+kable(summary(subset(populationdataset, countryname == "United Kingdom")[,6:7]), row.names = FALSE)
 ```
 
-```
-      year        population   
- Min.   :1960   Min.   :52.40  
- 1st Qu.:1974   1st Qu.:56.20  
- Median :1988   Median :57.00  
- Mean   :1988   Mean   :58.03  
- 3rd Qu.:2003   3rd Qu.:59.58  
- Max.   :2017   Max.   :66.02  
-```
+
+
+|     year    |  population  |
+|:------------|:-------------|
+|Min.   :1960 |Min.   :52.40 |
+|1st Qu.:1974 |1st Qu.:56.19 |
+|Median :1988 |Median :57.01 |
+|Mean   :1988 |Mean   :58.03 |
+|3rd Qu.:2003 |3rd Qu.:59.58 |
+|Max.   :2017 |Max.   :66.02 |
 
 United Kingdom Population Plot
 ========================================================
@@ -44,7 +46,7 @@ Code for the Projected Population
 ```r
 profile <- subset(populationdataset, countryname == "United Kingdom" & year == "2010") 
 profile <- profile[,c("countrycode","countryname", "year", "population")]
-profile$projectedpopulation <- predict(predmodel, newdata = data.frame(year = 2010))
+profile$projectedpopulation <- round(predict(predmodel, newdata = data.frame(year = 2010)),2)
 kable(profile, row.names = FALSE)
 ```
 
@@ -52,4 +54,4 @@ kable(profile, row.names = FALSE)
 
 |countrycode |countryname    | year| population| projectedpopulation|
 |:-----------|:--------------|----:|----------:|-------------------:|
-|GBR         |United Kingdom | 2010|   62.76637|            62.03376|
+|GBR         |United Kingdom | 2010|      62.77|               62.03|
