@@ -45,7 +45,7 @@ shinyUI(fluidPage(
                                 )
                         ),
                         # heading for plot
-                        h3("Plot to show/predict total population"),
+                        h3("Plot to show/predict total population in Millions"),
                         # display the plot 
                         plotOutput("plot1"),
                         # heading for Population Prediction
