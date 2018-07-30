@@ -16,8 +16,8 @@ This is a very simple application which displays the actual and projected total 
 
 Code to read data
 ========================================================
-1. Source Data <http://databank.worldbank.org/data/source/health-nutrition-and-population-statistics/>
-2. Source Code <https://github.com/sukhenc/worldpopulationpredictor/>
+1. Source Data <small><http://databank.worldbank.org/data/source/health-nutrition-and-population-statistics/></small>
+2. Source Code <small><https://github.com/sukhenc/worldpopulationpredictor/></small>
 
 ```r
 source("loaddata.R")
